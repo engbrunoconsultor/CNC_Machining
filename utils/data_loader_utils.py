@@ -24,9 +24,9 @@ import sys
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
+from typing import Literal
 
-
-def find_all_h5s_in_dir(s_dir):
+def find_all_h5s_in_dir(s_dir: os.PathLike):
     """
     list all .h5 files in a directory
     """
@@ -39,7 +39,7 @@ def find_all_h5s_in_dir(s_dir):
     return fileslist
 
 
-def load_tool_research_data(data_path, label, add_additional_label=True, verbose=True):
+def load_tool_research_data(data_path: os.PathLike, label: Literal["good","bad"], add_additional_label: bool =True, verbose: bool =True):
     """
     load data (good and bad) from the research data storages
     
@@ -59,10 +59,12 @@ def load_tool_research_data(data_path, label, add_additional_label=True, verbose
     # list all .h5 files
     list_paths = find_all_h5s_in_dir(data_path)
     list_paths.sort()
+    if not list_paths and verbose:
+        print(f"skipping {data_path} empty directory...")
 
     # read and append the samples with the corresponding labels
     if verbose:
-        print(f"laoding files from {data_path}... ")
+        print(f"loading files from {data_path}... ")
     for element in list_paths:
         # check if additional label needed ("Mxx_Aug20xx_Tool,nrX") 
         if add_additional_label:
@@ -79,7 +81,7 @@ def load_tool_research_data(data_path, label, add_additional_label=True, verbose
     return datalist, data_label
 
 
-def datafile_read(file, plotting=True):
+def datafile_read(file: os.PathLike, plotting=True):
     """loads and plots the data from the datafile
 
     Keyword Arguments:
