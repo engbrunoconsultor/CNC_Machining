@@ -42,7 +42,7 @@ The .h5 file contains the label of the process and is structured as follows:
 
 ### Installation Requirements
 
-The code provided for loading the data has been written in Python 3.8. You need the following conda packages: `h5py`, `numpy` and `matplotlib`. The script `utils/data_loader_utils.py` proposes functions to load and vizualize the data. The notebook `Data_explorer.ipynb` shows how those functions can be used.
+The code provided for loading the data has been written in Python 3.11. You need the following conda packages: `h5py`, `numpy` and `matplotlib`. The script `utils/data_loader_utils.py` proposes functions to load and vizualize the data. The notebook `Data_explorer.ipynb` shows how those functions can be used.
 
 
 ## License
